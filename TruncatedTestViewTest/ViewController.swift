@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             attributes: [ .font: textView.font! ],
             context: nil
         )
-        textViewHeightConstraint.constant = boundingRect.height.rounded(.up)
+        textViewHeightConstraint.constant = (boundingRect.height * UIScreen.main.nativeScale).rounded(.up) / UIScreen.main.nativeScale
     }
 
 }
