@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
     
-    private let maxTextViewSize: CGFloat = 250
+    private let maxTextViewSize: CGFloat = 100
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +24,12 @@ class ViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         let boundingRect = (textView.text as NSString).boundingRect(
-            with: .init(width: textView.frame.width, height: .greatestFiniteMagnitude),
+            with: .init(width: textView.frame.width, height: maxTextViewSize),
             options: .usesLineFragmentOrigin,
             attributes: [ .font: textView.font! ],
             context: nil
         )
-        textViewHeightConstraint.constant = boundingRect.height
+        textViewHeightConstraint.constant = boundingRect.height.rounded(.up)
     }
 
 }
